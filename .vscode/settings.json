@@ -1,0 +1,6 @@
+{
+  "editor.defaultFormatter": "standard.vscode-standard",
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit"
+  },
+}

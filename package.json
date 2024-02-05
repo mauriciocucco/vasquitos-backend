@@ -1,0 +1,23 @@
+{
+  "name": "vasquitos-backend",
+  "version": "1.0.0",
+  "description": "Express app for dogs shelter 'Los Vasquitos'",
+  "main": "src/api/index.js",
+  "scripts": {
+    "start": "node src/api/index.js",
+    "dev": "node --watch src/api/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "module",
+  "author": "Daiana Cucco",
+  "license": "ISC",
+  "devDependencies": {
+    "standard": "^17.1.0"
+  },
+  "eslintConfig": {
+    "extends": "standard"
+  },
+  "dependencies": {
+    "express": "4.18.2"
+  }
+}
