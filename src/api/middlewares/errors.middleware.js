@@ -1,4 +1,4 @@
-export const notFoundMiddleware = (req, res, next) => {
+const notFoundMiddleware = (req, res, next) => {
   const error = new Error('Route not found.')
 
   error.status = 404
@@ -18,6 +18,6 @@ const generalErrors = (err, req, res, next) => {
     .json({ error: err.message || 'Internal server error.' })
 }
 
-export const errorMiddlewares = (app) => {
+export const errorsMiddlewares = (app) => {
   app.use(notFoundMiddleware, generalErrors)
 }
