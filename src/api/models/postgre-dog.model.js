@@ -1,6 +1,6 @@
 import { DataTypes } from 'sequelize'
 
-import { connection } from '../../config/database.js'
+import { connection } from '../../config/postgre-database.config.js'
 
 export const Dog = connection.define('Dog', {
   name: {

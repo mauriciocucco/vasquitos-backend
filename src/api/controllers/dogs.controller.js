@@ -1,4 +1,4 @@
-import { getDogs } from '../services/dogs.service.js'
+import { getDogs } from '../repositories/postgre-dogs.repository.js'
 
 export const findAll = async (req, res, next) => {
   const { query } = req
