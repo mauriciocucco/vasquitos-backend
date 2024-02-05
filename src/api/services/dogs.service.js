@@ -1,8 +1,7 @@
-import { Dog } from '../models/Dog.model.js'
+import { Dog } from '../models/dog.model.js'
 
 export const getDogs = async (queryParams) => {
   const { limit = 10, from = 0 } = queryParams
-
   const { count: total, rows: dogs } = await Dog.findAndCountAll({
     offset: from,
     limit
