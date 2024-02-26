@@ -31,9 +31,9 @@ export const createPreference = async ({ id, title, unit_price }) => {
     }
   }
 
-  const { sandbox_init_point } = await preferenceInstance.create({ body })
+  const { init_point } = await preferenceInstance.create({ body })
 
-  return sandbox_init_point
+  return init_point
 }
 
 export const searchPayment = async (id) => {
