@@ -2,24 +2,16 @@ import { DataTypes } from 'sequelize'
 
 import { connection } from '../../config/postgre-database.config.js'
 
-export const Donation = connection.define('Donation', {
+export const Subscription = connection.define('Subscription', {
   mp_id: {
     type: DataTypes.NUMBER,
     allowNull: false
   },
-  description: {
+  payer_email: {
     type: DataTypes.STRING,
-    allowNull: false
-  },
-  amount: {
-    type: DataTypes.NUMBER,
-    allowNull: false
-  },
-  payment_method: {
-    type: DataTypes.JSONB,
     allowNull: true
   },
-  payer: {
+  auto_recurring: {
     type: DataTypes.JSONB,
     allowNull: true
   },
@@ -27,7 +19,7 @@ export const Donation = connection.define('Donation', {
     type: DataTypes.STRING,
     allowNull: false
   },
-  status_detail: {
+  payment_method_id: {
     type: DataTypes.STRING,
     allowNull: true
   },
@@ -42,4 +34,4 @@ export const Donation = connection.define('Donation', {
   deleted_at: {
     type: DataTypes.DATE
   }
-}, { timestamps: false, tableName: 'donations' })
+}, { timestamps: false, tableName: 'subscriptions' })

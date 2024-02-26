@@ -9,8 +9,8 @@ const notFoundMiddleware = (req, res, next) => {
 const generalErrors = (err, req, res, next) => {
   console.log('generalErrors error: ', err)
 
-  if (err.validationErrors) {
-    return res.status(err.status).json({ errors: err.validationErrors })
+  if (!err) {
+    return next()
   }
 
   return res
