@@ -1,7 +1,7 @@
 {
   "name": "vasquitos-backend",
   "version": "1.0.0",
-  "description": "Express app for dogs shelter 'Los Vasquitos'",
+  "description": "Express app for dogs shelter 'Vascos Animalistas'",
   "main": "src/api/index.js",
   "scripts": {
     "start": "node --env-file=.env src/api/index.js",

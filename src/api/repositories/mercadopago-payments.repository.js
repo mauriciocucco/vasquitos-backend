@@ -116,7 +116,7 @@ export const saveSubscription = async (subscription) => {
 
 export const subscribe = async (payer_email) => {
   const body = {
-    reason: 'Suscripción mensual a Vasquitos',
+    reason: 'Suscripción mensual a Vascos Animalistas',
     auto_recurring: {
       frequency: 1,
       frequency_type: 'months',
