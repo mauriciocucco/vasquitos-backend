@@ -1,4 +1,5 @@
 import express from 'express'
+import 'dotenv/config'
 
 import { mainMiddlewares } from './middlewares/main.middleware.js'
 import { routes } from './routes/main.route.js'
