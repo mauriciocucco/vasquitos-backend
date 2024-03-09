@@ -4,7 +4,8 @@
   "description": "Express app for dogs shelter 'Vascos Animalistas'",
   "main": "src/api/index.js",
   "scripts": {
-    "start": "node src/api/index.js",
+    "start": "node --env-file=.env src/api/index.js",
+    "dev": "node --watch --env-file=.env src/api/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "type": "module",
@@ -21,7 +22,6 @@
   },
   "dependencies": {
     "cors": "^2.8.5",
-    "dotenv": "^16.4.5",
     "express": "4.18.2",
     "express-rate-limit": "^7.1.5",
     "helmet": "^7.1.0",
