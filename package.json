@@ -6,8 +6,7 @@
   "scripts": {
     "start": "node --env-file=.env src/api/index.js",
     "dev": "node --watch --env-file=.env src/api/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "echo hello"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "type": "module",
   "author": "Daiana Cucco",
