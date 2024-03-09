@@ -13,9 +13,6 @@ const PATHS = {
 }
 
 export const routes = (app) => {
-  app.use('/', (req, res) => {
-    res.send('Welcome to the Vasquitos API')
-  })
   app.use(PATHS.dogs, dogs)
   app.use(PATHS.payments, payments)
   app.use(PATHS.sponsors, sponsors)
