@@ -11,7 +11,11 @@ export const Donation = connection.define('Donation', {
     type: DataTypes.STRING,
     allowNull: false
   },
-  amount: {
+  total_amount: {
+    type: DataTypes.NUMBER,
+    allowNull: false
+  },
+  net_amount: {
     type: DataTypes.NUMBER,
     allowNull: false
   },
@@ -20,6 +24,14 @@ export const Donation = connection.define('Donation', {
     allowNull: true
   },
   payer: {
+    type: DataTypes.JSONB,
+    allowNull: true
+  },
+  fee_details: {
+    type: DataTypes.JSONB,
+    allowNull: true
+  },
+  charges_details: {
     type: DataTypes.JSONB,
     allowNull: true
   },

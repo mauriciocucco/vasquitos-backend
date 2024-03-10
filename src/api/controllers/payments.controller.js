@@ -7,7 +7,7 @@ export const setPreference = async (req, res, next) => {
   try {
     const result = await createPreference(body)
 
-    return res.json(result)
+    return res.status(201).json(result)
   } catch (error) {
     console.log('createPreference payments controller error: ', error)
 
@@ -18,13 +18,11 @@ export const setPreference = async (req, res, next) => {
 export const createPayment = async (req, res, next) => {
   try {
     if (req.body?.type === 'subscription') {
-      const { mp_id, payer_email, status, auto_recurring, payment_method_id } = req.body
-      const subscription = await saveSubscription({ mp_id, payer_email, status, auto_recurring, payment_method_id })
+      const subscription = await saveSubscription(req.body)
 
       return res.status(201).json({ message: 'Subscription created successfully', data: subscription })
     } else {
-      const { mp_id, description, amount, payment_method, payer, status, status_detail } = req.body
-      const donation = await saveDonation({ mp_id, description, amount, payment_method, payer, status, status_detail })
+      const donation = await saveDonation(req.body)
 
       return res.status(201).json({ message: 'Donation created successfully', data: donation })
     }
