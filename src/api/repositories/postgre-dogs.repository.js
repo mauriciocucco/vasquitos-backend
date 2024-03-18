@@ -9,3 +9,9 @@ export const getDogs = async (queryParams) => {
 
   return { dogs, total, limit, from }
 }
+
+export const storeDog = async (dog) => {
+  const response = await Dog.create(dog)
+
+  return response
+}

@@ -5,7 +5,8 @@ import { connection } from '../../config/postgre-database.config.js'
 export const Status = connection.define('Status', {
   name: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
+    defaultValue: 2
   }
 }, { timestamps: false, tableName: 'status' })
 
@@ -16,6 +17,14 @@ export const Dog = connection.define('Dog', {
   },
   age: {
     type: DataTypes.INTEGER,
+    allowNull: true,
+    defaultValue: null,
+    set (value) {
+      this.setDataValue('age', value === '' ? null : value)
+    }
+  },
+  description: {
+    type: DataTypes.STRING,
     allowNull: true
   },
   sex: {
@@ -25,11 +34,18 @@ export const Dog = connection.define('Dog', {
   },
   status_id: {
     type: DataTypes.INTEGER,
-    allowNull: false
+    allowNull: false,
+    set (value) {
+      this.setDataValue('status_id', value === '' ? 2 : value)
+    }
   },
   image: {
     type: DataTypes.STRING,
-    allowNull: true
+    allowNull: true,
+    defaultValue: null,
+    set (value) {
+      this.setDataValue('image', value === '' ? null : value)
+    }
   },
   created_at: {
     type: DataTypes.DATE,
