@@ -127,6 +127,8 @@ export const subscribe = async (payer_email) => {
     back_url: process.env.FRONT_BASE_URL
   }
 
+  console.log('subscribe body: ', body)
+
   return await fetch(
     `${process.env.MERCADOPAGO_PREAPPROVAL_URL}`,
     {
@@ -139,6 +141,8 @@ export const subscribe = async (payer_email) => {
     }
   ).then(async (res) => {
     const response = await res.json()
+
+    console.log('subscribe response: ', response)
 
     if (!res.ok) {
       const error = new Error(response.message)
