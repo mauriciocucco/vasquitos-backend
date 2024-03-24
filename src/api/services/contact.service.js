@@ -6,7 +6,7 @@ export const sendMail = async (body) => {
   const info = await transporter.sendMail({
     from: `${fullName} <${email}>`,
     to: `${process.env.MAIL_USER}`,
-    subject: 'Nuevo mensaje ✔', // Subject line
+    subject: 'Nuevo mensaje desde la sección de Contacto ✔', // Subject line
     text: `${contactMessage}`, // plain text body
     html: `
         <h1>¡Recibiste un mensaje desde Contacto!</h1>

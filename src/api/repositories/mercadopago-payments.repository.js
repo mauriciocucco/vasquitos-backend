@@ -124,7 +124,7 @@ export const subscribe = async (payer_email) => {
       currency_id: 'ARS'
     },
     payer_email,
-    back_url: 'https://google.com'
+    back_url: process.env.FRONT_BASE_URL
   }
 
   return await fetch(
