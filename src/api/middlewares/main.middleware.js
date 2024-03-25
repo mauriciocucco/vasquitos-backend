@@ -28,6 +28,4 @@ export const mainMiddlewares = (app) => {
   // Body parser de Express
   app.use(json()) // parsea application/json
   app.use(urlencoded({ extended: false })) // parsea application/x-www-form-urlencoded
-
-  app.set('trust proxy', 1) // trust first proxy
 }
