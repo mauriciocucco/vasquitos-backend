@@ -12,11 +12,11 @@ export const Donation = connection.define('Donation', {
     allowNull: false
   },
   total_amount: {
-    type: DataTypes.NUMBER,
+    type: DataTypes.DECIMAL(10, 2),
     allowNull: false
   },
   net_amount: {
-    type: DataTypes.NUMBER,
+    type: DataTypes.DECIMAL(10, 2),
     allowNull: false
   },
   payment_method: {
