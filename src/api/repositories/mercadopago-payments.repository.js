@@ -25,6 +25,8 @@ export const createPreference = async ({ id, title, unit_price }) => {
       installments: 1,
       default_installments: 1
     },
+    notification_url: `${process.env.BACK_BASE_URL}/api/payments/notifications`,
+    external_reference: id,
     back_urls: {
       success: `${process.env.FRONT_BASE_URL}`,
       failure: `${process.env.FRONT_BASE_URL}`
