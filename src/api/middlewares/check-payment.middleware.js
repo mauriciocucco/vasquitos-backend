@@ -8,7 +8,7 @@ export const checkPayment = async (req, res, next) => {
 
   const paymentId = body.data?.id
 
-  if (!paymentId) throw new Error('Payment id is required')
+  if (!paymentId) return res.status(201).json({ message: 'Payment ID is missing' })
 
   // if (!headers['x-signature'] !== process.env.SIGNATURE_ID) {
   //   return res.status(401).json({ message: 'Signature id is not valid' })
