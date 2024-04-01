@@ -3,7 +3,10 @@ import { searchPayment, searchSubscription } from '../repositories/mercadopago-p
 
 export const checkPayment = async (req, res, next) => {
   const { body/*, headers */ } = req
-  const paymentId = body.data.id
+
+  console.log('checkPayment middleware body: ', body)
+
+  const paymentId = body.data?.id
 
   // if (!headers['x-signature'] !== process.env.SIGNATURE_ID) {
   //   return res.status(401).json({ message: 'Signature id is not valid' })
