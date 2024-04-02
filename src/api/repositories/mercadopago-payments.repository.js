@@ -12,7 +12,7 @@ export const createPreference = async ({ id, title, unit_price }) => {
         id,
         title,
         quantity: 1,
-        unit_price,
+        unit_price: parseFloat(unit_price),
         currency_id: 'ARS'
       }
     ],
@@ -25,7 +25,6 @@ export const createPreference = async ({ id, title, unit_price }) => {
       installments: 1,
       default_installments: 1
     },
-    notification_url: `${process.env.BACK_BASE_URL}/api/payments/notifications`,
     external_reference: id,
     back_urls: {
       success: `${process.env.FRONT_BASE_URL}`,
