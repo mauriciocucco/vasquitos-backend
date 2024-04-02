@@ -7,7 +7,7 @@ export const checkPayment = async (req, res, next) => {
   console.log('checkPayment middleware body: ', body)
   console.log('checkPayment middleware query: ', query)
 
-  const paymentId = body.data?.id || (query.topic === 'payment' ? query.id : null)
+  const paymentId = body.data?.id
 
   // if (!headers['x-signature'] !== process.env.SIGNATURE_ID) {
   //   return res.status(401).json({ message: 'Signature id is not valid' })
