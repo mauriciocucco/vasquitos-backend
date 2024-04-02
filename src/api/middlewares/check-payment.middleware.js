@@ -2,10 +2,11 @@
 import { searchPayment, searchSubscription } from '../repositories/mercadopago-payments.repository.js'
 
 export const checkPayment = async (req, res, next) => {
-  const { body, query/*, headers */ } = req
+  const { body/*, headers */ } = req
 
   console.log('checkPayment middleware body: ', body)
-  console.log('checkPayment middleware query: ', query)
+
+  if (body.type && !body.action) return res.json({ message: 'Notification without action. Action is required for further processing.' })
 
   const paymentId = body.data?.id
 
