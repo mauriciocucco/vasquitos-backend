@@ -2,6 +2,7 @@
 import { searchPayment, searchSubscription } from '../repositories/mercadopago-payments.repository.js'
 
 export const checkPayment = async (req, res, next) => {
+  console.log('checkPayment middleware req: ', req)
   const { body/*, headers */ } = req
 
   console.log('checkPayment middleware body: ', body)
