@@ -2,17 +2,13 @@
 import { searchPayment, searchSubscription } from '../repositories/mercadopago-payments.repository.js'
 
 export const checkPayment = async (req, res, next) => {
-  const { body/*, headers */ } = req
+  const { body } = req
 
   console.log('checkPayment middleware body: ', body)
 
   if (body.type && !body.action) return res.json({ message: 'Notification without action. Action is required for further processing.' })
 
   const paymentId = body.data?.id
-
-  // if (!headers['x-signature'] !== process.env.SIGNATURE_ID) {
-  //   return res.status(401).json({ message: 'Signature id is not valid' })
-  // }
 
   try {
     if (body.type === 'subscription_preapproval') {

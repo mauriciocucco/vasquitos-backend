@@ -39,8 +39,6 @@ export const createSubscription = async (req, res, next) => {
   try {
     const subscription = await subscribe(payer_email)
 
-    console.log('createSubscription subscription: ', subscription)
-
     return res.status(201).json({ message: 'Subscription created successfully', url: subscription.init_point })
   } catch (error) {
     console.log('createSubscription payments controller error: ', error)
