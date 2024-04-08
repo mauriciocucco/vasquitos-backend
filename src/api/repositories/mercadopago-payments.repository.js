@@ -40,11 +40,7 @@ export const createPreference = async ({ id, title, unit_price }) => {
 
 export const searchPayment = async (id) => {
   if (!id) {
-    const error = new Error('Id is required')
-
-    error.status = 400
-
-    throw error
+    return { message: 'Id is required' }
   }
 
   const paymentInstance = new Payment(client)
@@ -54,11 +50,7 @@ export const searchPayment = async (id) => {
 
 export const searchSubscription = async (id) => {
   if (!id) {
-    const error = new Error('Id is required')
-
-    error.status = 400
-
-    throw error
+    return { message: 'Id is required' }
   }
 
   return await fetch(
