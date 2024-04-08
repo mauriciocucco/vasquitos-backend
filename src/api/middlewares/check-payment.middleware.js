@@ -4,6 +4,8 @@ import { searchPayment, searchSubscription } from '../repositories/mercadopago-p
 export const checkPayment = async (req, res, next) => {
   const { body } = req
 
+  console.log('QUERY: ', req.query)
+
   console.log('checkPayment middleware body: ', body)
 
   if (body.type && !body.action) return res.json({ message: 'Notification without action. Action is required for further processing.' })
