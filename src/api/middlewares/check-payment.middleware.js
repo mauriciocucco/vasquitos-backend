@@ -8,7 +8,7 @@ export const checkPayment = async (req, res, next) => {
 
   console.log('checkPayment middleware body: ', body)
 
-  if (body.type && !body.action) return res.json({ message: 'Notification without action. Action is required for further processing.' })
+  if (!body.action) return res.json({ message: 'Notification without action. Action is required for further processing.' })
 
   const paymentId = body.data?.id
 
