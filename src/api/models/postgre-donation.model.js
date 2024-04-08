@@ -23,6 +23,10 @@ export const Donation = connection.define('Donation', {
     type: DataTypes.JSONB,
     allowNull: true
   },
+  card: {
+    type: DataTypes.JSONB,
+    allowNull: true
+  },
   payer: {
     type: DataTypes.JSONB,
     allowNull: true

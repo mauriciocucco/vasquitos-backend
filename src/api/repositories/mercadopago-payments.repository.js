@@ -40,7 +40,11 @@ export const createPreference = async ({ id, title, unit_price }) => {
 
 export const searchPayment = async (id) => {
   if (!id) {
-    return { message: 'Id is required' }
+    const message = 'Id is required'
+
+    console.log(message)
+
+    return { message }
   }
 
   const paymentInstance = new Payment(client)
@@ -50,7 +54,11 @@ export const searchPayment = async (id) => {
 
 export const searchSubscription = async (id) => {
   if (!id) {
-    return { message: 'Id is required' }
+    const message = 'Id is required'
+
+    console.log(message)
+
+    return { message }
   }
 
   return await fetch(
