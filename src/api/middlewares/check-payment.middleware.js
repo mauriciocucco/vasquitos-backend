@@ -19,7 +19,9 @@ export const checkPayment = async (req, res, next) => {
   try {
     if (body.type === 'subscription_preapproval') {
       if (body.action !== 'updated') {
-        return res.status(201).json({ message: 'Subscription created successfully' })
+        const message = 'Subscription updated action'
+
+        return res.json({ message })
       }
 
       const subscription = await searchSubscription(paymentId)
@@ -28,7 +30,13 @@ export const checkPayment = async (req, res, next) => {
 
       console.log('checkPayment middleware subscription: ', subscription)
 
-      if (subscription.status === 'pending') return res.status(201).json({ message: 'Subscription updated successfully' })
+      if (subscription.status === 'pending') {
+        const message = 'Subscription pending status'
+
+        console.log(message)
+
+        return res.json({ message })
+      }
 
       const { id, payer_email, status, auto_recurring, payment_method_id } = subscription
 
