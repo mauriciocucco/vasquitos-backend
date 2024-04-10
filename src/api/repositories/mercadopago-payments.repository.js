@@ -156,8 +156,8 @@ export const subscribe = async () => {
 
     console.log('subscription: ', subscription)
 
-    const { id, payer_email, status, auto_recurring, payment_method_id } = subscription
-    const savedSubscription = await saveSubscription({ mp_id: id, payer_email, status, auto_recurring, payment_method_id })
+    const { id, reason, init_point, auto_recurring, status } = subscription
+    const savedSubscription = await saveSubscription({ mp_id: id, reason, init_point, auto_recurring, status })
 
     return savedSubscription
   } catch (error) {

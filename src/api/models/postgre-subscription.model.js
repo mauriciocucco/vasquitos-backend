@@ -7,9 +7,13 @@ export const Subscription = connection.define('Subscription', {
     type: DataTypes.NUMBER,
     allowNull: false
   },
-  payer_email: {
+  reason: {
     type: DataTypes.STRING,
-    allowNull: true
+    allowNull: false
+  },
+  init_point: {
+    type: DataTypes.STRING,
+    allowNull: false
   },
   auto_recurring: {
     type: DataTypes.JSONB,
@@ -18,10 +22,6 @@ export const Subscription = connection.define('Subscription', {
   status: {
     type: DataTypes.STRING,
     allowNull: false
-  },
-  payment_method_id: {
-    type: DataTypes.STRING,
-    allowNull: true
   },
   created_at: {
     type: DataTypes.DATE,
