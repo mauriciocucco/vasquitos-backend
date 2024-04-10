@@ -23,6 +23,24 @@ export const Partner = connection.define('Partner', {
     type: DataTypes.STRING,
     allowNull: false
   },
+  address: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  nationality: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  age: {
+    type: DataTypes.INTEGER,
+    allowNull: false
+  },
+  status: {
+    type: DataTypes.ENUM,
+    values: ['pending', 'active', 'cancelled'],
+    allowNull: false,
+    defaultValue: 'pending'
+  },
   created_at: {
     type: DataTypes.DATE,
     defaultValue: DataTypes.NOW
