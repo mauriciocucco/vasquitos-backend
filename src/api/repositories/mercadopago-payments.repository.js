@@ -116,37 +116,34 @@ export const saveSubscription = async (subscription) => {
   return newSubscription
 }
 
-export const subscribe = async (payer_email) => {
+export const subscribe = async () => {
   const body = {
-    reason: 'Suscripción mensual a Vascos Animalistas',
+    reason: 'Suscripción mensual a Vascos Animalistas VG',
     auto_recurring: {
       frequency: 1,
       frequency_type: 'months',
       transaction_amount: 3000,
       currency_id: 'ARS'
     },
-    payer_email,
     back_url: process.env.FRONT_BASE_URL
   }
 
-  console.log('subscribe body: ', body)
-
-  return await fetch(
-    `${process.env.MERCADOPAGO_PREAPPROVAL_URL}`,
-    {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${process.env.MERCADOPAGO_TOKEN}`
-      },
-      body: JSON.stringify(body)
-    }
-  ).then(async (res) => {
-    const response = await res.json()
+  try {
+    const response = await fetch(
+      `${process.env.MERCADOPAGO_PREAPPROVAL_URL}`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${process.env.MERCADOPAGO_TOKEN}`
+        },
+        body: JSON.stringify(body)
+      }
+    )
 
     console.log('subscribe response: ', response)
 
-    if (!res.ok) {
+    if (!response.ok) {
       const error = new Error(response.message)
 
       error.status = 500
@@ -154,6 +151,17 @@ export const subscribe = async (payer_email) => {
       throw error
     }
 
-    return response
-  })
+    const subscription = await response.json()
+
+    console.log('subscription: ', subscription)
+
+    const { id, payer_email, status, auto_recurring, payment_method_id } = subscription
+    const savedSubscription = await saveSubscription({ mp_id: id, payer_email, status, auto_recurring, payment_method_id })
+
+    return savedSubscription
+  } catch (error) {
+    console.log('subscribe error: ', error)
+
+    throw error
+  }
 }

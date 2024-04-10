@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import { searchPayment, searchSubscription } from '../repositories/mercadopago-payments.repository.js'
+import { searchPayment } from '../repositories/mercadopago-payments.repository.js'
 
 export const checkPayment = async (req, res, next) => {
   const { body, query } = req
@@ -17,30 +17,8 @@ export const checkPayment = async (req, res, next) => {
   const paymentId = body.data?.id
 
   try {
-    if (body.type === 'subscription_preapproval') {
-      if (body.action !== 'updated') {
-        const message = 'Subscription updated action'
-
-        return res.json({ message })
-      }
-
-      const subscription = await searchSubscription(paymentId)
-
-      if (subscription.message === 'Id is required') return res.json({ message: subscription.message })
-
-      console.log('checkPayment middleware subscription: ', subscription)
-
-      if (subscription.status === 'pending') {
-        const message = 'Subscription pending status'
-
-        console.log(message)
-
-        return res.json({ message })
-      }
-
-      const { id, payer_email, status, auto_recurring, payment_method_id } = subscription
-
-      req.body = { mp_id: id, payer_email, status, auto_recurring, payment_method_id, type: 'subscription' }
+    if (body.type !== 'payment') {
+      return res.json({ message: 'Notification is not a payment' })
     } else {
       const payment = await searchPayment(paymentId)
 

@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import { createPreference, saveDonation, subscribe, saveSubscription } from '../repositories/mercadopago-payments.repository.js'
+import { createPreference, saveDonation, subscribe } from '../repositories/mercadopago-payments.repository.js'
 
 export const setPreference = async (req, res, next) => {
   const { body } = req
@@ -17,15 +17,9 @@ export const setPreference = async (req, res, next) => {
 
 export const createPayment = async (req, res, next) => {
   try {
-    if (req.body?.type === 'subscription') {
-      const subscription = await saveSubscription(req.body)
+    const donation = await saveDonation(req.body)
 
-      return res.status(201).json({ message: 'Subscription created successfully', data: subscription })
-    } else {
-      const donation = await saveDonation(req.body)
-
-      return res.status(201).json({ message: 'Donation created successfully', data: donation })
-    }
+    return res.status(201).json({ message: 'Donation created successfully', data: donation })
   } catch (error) {
     console.log('createPayment controller error: ', error)
 
@@ -34,10 +28,8 @@ export const createPayment = async (req, res, next) => {
 }
 
 export const createSubscription = async (req, res, next) => {
-  const { payer_email } = req.body
-
   try {
-    const subscription = await subscribe(payer_email)
+    const subscription = await subscribe()
 
     return res.status(201).json({ message: 'Subscription created successfully', url: subscription.init_point })
   } catch (error) {
