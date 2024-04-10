@@ -33,10 +33,6 @@ export const createSubscription = async (req, res, next) => {
 
     return res.status(201).json({ message: 'Subscription created successfully', url: subscription.init_point })
   } catch (error) {
-    console.log('createSubscription payments controller error: ', error)
-
-    if (error.status) return res.status(error.status).json({ message: error.message })
-
     next(error)
   }
 }

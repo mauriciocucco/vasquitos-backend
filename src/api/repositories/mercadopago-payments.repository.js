@@ -125,8 +125,7 @@ export const subscribe = async () => {
       transaction_amount: 3000,
       currency_id: 'ARS'
     },
-    back_url: process.env.FRONT_BASE_URL,
-    status: 'authorized'
+    back_url: process.env.FRONT_BASE_URL
   }
 
   try {
@@ -145,9 +144,13 @@ export const subscribe = async () => {
     console.log('subscribe response: ', response)
 
     if (!response.ok) {
-      const error = new Error(response.message)
+      const parsedResponse = await response.json()
 
-      error.status = 500
+      console.log('subscribe error message: ', parsedResponse)
+
+      const error = new Error(parsedResponse.message || 'Error creating subscription')
+
+      error.status = response.status || 500
 
       throw error
     }
