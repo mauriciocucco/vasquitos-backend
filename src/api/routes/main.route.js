@@ -4,6 +4,7 @@ import { sponsors } from './sponsors.route.js'
 import { members } from './members.route.js'
 import { contact } from './contact.route.js'
 import { partners } from './partners.route.js'
+import { subscriptions } from './subscriptions.route.js'
 
 const PATHS = {
   dogs: '/api/dogs',
@@ -11,7 +12,8 @@ const PATHS = {
   sponsors: '/api/sponsors',
   members: '/api/members',
   contact: '/api/contact',
-  partners: '/api/partners'
+  partners: '/api/partners',
+  subscriptions: '/api/subscriptions'
 }
 
 export const routes = (app) => {
@@ -24,4 +26,5 @@ export const routes = (app) => {
   app.use(PATHS.members, members)
   app.use(PATHS.contact, contact)
   app.use(PATHS.partners, partners)
+  app.use(PATHS.subscriptions, subscriptions)
 }

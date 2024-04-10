@@ -125,7 +125,8 @@ export const subscribe = async () => {
       transaction_amount: 3000,
       currency_id: 'ARS'
     },
-    back_url: process.env.FRONT_BASE_URL
+    back_url: process.env.FRONT_BASE_URL,
+    status: 'authorized'
   }
 
   try {
