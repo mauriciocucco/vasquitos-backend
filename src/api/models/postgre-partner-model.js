@@ -27,6 +27,14 @@ export const Partner = connection.define('Partner', {
     type: DataTypes.STRING,
     allowNull: false
   },
+  city: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  province: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
   nationality: {
     type: DataTypes.STRING,
     allowNull: false
