@@ -1,6 +1,6 @@
 import { Router } from 'express'
 import { store } from '../controllers/partners.controller.js'
 
-export const members = Router()
+export const partners = Router()
 
-members.post('/', store)
+partners.post('/', store)
