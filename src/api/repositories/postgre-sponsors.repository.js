@@ -1,11 +1,7 @@
 import { Sponsor } from '../models/postgre-sponsor.model.js'
 
-export const getSponsors = async (queryParams) => {
-  const { limit = 10, from = 0 } = queryParams
-  const { count: total, rows: sponsors } = await Sponsor.findAndCountAll({
-    offset: from,
-    limit
-  })
+export const getSponsors = async () => {
+  const { rows } = await Sponsor.findAndCountAll()
 
-  return { sponsors, total, limit, from }
+  return rows
 }
