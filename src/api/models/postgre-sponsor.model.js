@@ -11,6 +11,10 @@ export const Sponsor = connection.define('Sponsor', {
     type: DataTypes.STRING,
     allowNull: true
   },
+  url: {
+    type: DataTypes.STRING,
+    allowNull: true
+  },
   created_at: {
     type: DataTypes.DATE,
     defaultValue: DataTypes.NOW

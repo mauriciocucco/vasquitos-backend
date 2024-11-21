@@ -4,14 +4,9 @@ export const findAll = async (req, res, next) => {
   const { query } = req
 
   try {
-    const { sponsors, total, limit, from } = await getSponsors(query)
+    const sponsors = await getSponsors(query)
 
-    res.json({
-      data: sponsors,
-      limit,
-      from,
-      total
-    })
+    res.json(sponsors)
   } catch (error) {
     console.log('findAll sponsors controller error: ', error)
 
